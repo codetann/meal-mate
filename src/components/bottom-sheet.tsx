@@ -66,7 +66,7 @@ export const BottomSheet = ({ children, show, onClose, ...props }: any) => {
               dragConstraints={{ top: 0 }}
               dragElastic={0.1}
               onDragEnd={(e, { offset, velocity }) => {
-                if (offset.y > 200 || velocity.y > 200) {
+                if (offset.y > 100 || velocity.y > 100) {
                   onClose();
                 }
               }}
@@ -78,6 +78,11 @@ export const BottomSheet = ({ children, show, onClose, ...props }: any) => {
                 borderRadius="2rem 2rem 0 0"
                 shadow="xl"
                 pos="relative"
+                display="flex"
+                flexDir="column"
+                alignItems="center"
+                justifyContent="start"
+                pt="2rem"
               >
                 <chakra.div
                   pos="absolute"
@@ -89,6 +94,7 @@ export const BottomSheet = ({ children, show, onClose, ...props }: any) => {
                   bg="whiteAlpha.500"
                   borderRadius="1rem"
                 />
+                {children}
               </chakra.div>
             </motion.div>
           </chakra.div>
