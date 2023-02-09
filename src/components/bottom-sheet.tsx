@@ -11,7 +11,6 @@ export const BottomSheet = ({ children, show, onClose, ...props }: any) => {
     <AnimatePresence>
       {show && (
         <motion.div
-          onClick={onClose}
           style={{
             position: "absolute",
             bottom: 0,
@@ -37,16 +36,27 @@ export const BottomSheet = ({ children, show, onClose, ...props }: any) => {
             zIndex={1000}
             overflow="hidden"
           >
+            <chakra.div
+              onClick={onClose}
+              pos="fixed"
+              bottom="0"
+              left="0"
+              w="100%"
+              h="100%"
+              background="rgba(0,0,0,0.1)"
+              backdropFilter={"blur(100px)"}
+              zIndex={1001}
+            />
             <motion.div
               style={{
                 position: "absolute",
                 bottom: 0,
                 left: 0,
                 width: "100%",
-                height: "100%",
+                height: "70vh",
                 display: "flex",
                 alignItems: "end",
-                zIndex: 1000,
+                zIndex: 1002,
               }}
               initial={{ y: "100%" }}
               animate={{ y: "0%" }}
