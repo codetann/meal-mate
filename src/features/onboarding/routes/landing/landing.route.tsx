@@ -1,6 +1,7 @@
 import { chakra, useDisclosure } from "@chakra-ui/react";
 import { BottomSheet, Button, RainingEmojis } from "@/components";
 import { Layout } from "@/features/onboarding/layout";
+import { useNavigate } from "react-router-dom";
 
 const foodIcons = [
   "🍒",
@@ -21,6 +22,8 @@ const foodIcons = [
 
 export function LandingRoute() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
+
   return (
     <Layout>
       <RainingEmojis emojis={foodIcons} />
@@ -49,10 +52,14 @@ export function LandingRoute() {
         p="1rem"
         gap="1rem"
       >
-        <Button h="100%" bg="background.light" onClick={onOpen}>
+        <Button
+          h="100%"
+          bg="background.light"
+          onClick={() => navigate("/join")}
+        >
           Join Friends
         </Button>
-        <Button h="100%" bg="#7548df" onClick={onOpen}>
+        <Button h="100%" bg="#7548df" onClick={() => null}>
           Create Group
         </Button>
       </chakra.div>
